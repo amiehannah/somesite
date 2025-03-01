@@ -1,0 +1,93 @@
+/* global reset */
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: hsl(--color-off-white);
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* fonts */
+@font-face {
+  font-family: "Montserrat", sans-serif;
+  src: url("/fonts/Montserrat-VariableFont_wght.tff") format("ttf");
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* breakpoints */
+
+  /* colours */
+  --color-white: 0 0% 100%;
+  --color-off-white: 0 0% 96%;
+  --color-navy: 203 78% 15%;
+  --color-cobalt: 205 100% 34%;
+  --color-highlight: 167 87% 38%;
+  --color-teal: 178 84% 24%;
+  --color-mint: 171 38% 85%;
+  --color-stone: 32 32% 91%;
+
+  /* spacing */
+  --std-gap: 8px;
+}

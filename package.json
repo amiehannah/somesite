@@ -1,0 +1,24 @@
+{
+  "name": "byb-project",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    	"format": "prettier . --write"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.2.1",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "astro": "^5.4.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+		"prettier": "^3.3.3"
+	}
+}
