@@ -94,7 +94,9 @@ h3 {
 :root {
   /* breakpoints */
   --breakpoint-mobile: 375px;
+  --breakpoint-small: 576px;
   --breakpoint-tablet: 768px;
+  --breakpoint-large: 992px;
   --breakpoint-desktop: 1280px;
 
   /* colours */
