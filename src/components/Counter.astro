@@ -1,0 +1,126 @@
+<section class="counters">
+  <div>
+    <div class="counter">
+      <h1><span data-count="20">0</span>+</h1>
+      <h3>Years Experience</h3>
+    </div>
+
+    <div class="counter">
+      <h1><span data-count="170">0</span>+</h1>
+      <h3>Bores Installed</h3>
+    </div>
+
+    <div class="counter">
+      <h1><span data-count="15">0</span>+</h1>
+      <h3>Drill Rigs</h3>
+    </div>
+
+    <div class="counter">
+      <h1><span data-count="220">0</span>+</h1>
+      <h3>Satisfied Customers</h3>
+    </div>
+  </div>
+</section>
+
+<style>
+  .counters {
+    padding: 4em 2em;
+    background: hsl(var(--color-mint));
+    color: hsl(var(--color-navy));
+    text-align: center;
+  }
+
+  .counters > div {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5em;
+  }
+
+  .counter {
+    position: relative;
+  }
+
+  .counter:not(:last-child)::before {
+    content: "";
+    background: hsl(var(--color-navy));
+    position: absolute;
+    width: 2px;
+    height: 5em;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -3em;
+  }
+
+  /* media queries */
+  @media screen and (max-width: 900px) and (min-width: 501px) {
+    .counters {
+      padding: 5em;
+    }
+
+    .counters > div {
+      grid-template-columns: 1fr 1fr;
+    }
+    .counter:nth-child(2)::before {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .counters > div {
+      grid-template-columns: 1fr;
+      row-gap: 5em;
+    }
+    .counter:not(:last-child)::before {
+      width: 90%;
+      height: 2px;
+      top: initial;
+      right: initial;
+      bottom: -3em;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  span {
+    margin-right: 0.08em;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const counters: NodeListOf<HTMLSpanElement> =
+      document.querySelectorAll(".counters span");
+    const container: HTMLDivElement | null =
+      document.querySelector(".counters");
+    let activated = false;
+
+    if (!container) return;
+
+    window.addEventListener("scroll", () => {
+      const triggerPoint = container.offsetTop - container.offsetHeight - 200;
+      const scrollY = window.scrollY;
+
+      if (scrollY > triggerPoint && !activated) {
+        counters.forEach((counter) => {
+          let count = 0;
+          const target = parseInt(counter.dataset.count || "0");
+
+          const updateCount = () => {
+            if (count < target) {
+              counter.innerText = (++count).toString();
+              setTimeout(updateCount, 10);
+            }
+          };
+
+          counter.innerText = "0";
+          updateCount();
+        });
+        activated = true;
+      } else if (scrollY < triggerPoint - 300 || scrollY === 0) {
+        counters.forEach((counter) => (counter.innerText = "0"));
+        activated = false;
+      }
+    });
+  });
+</script>

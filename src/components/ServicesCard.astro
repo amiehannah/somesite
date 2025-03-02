@@ -1,0 +1,130 @@
+---
+const data = [
+  {
+    subheading: "Water Bores",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+    svgPath:
+      "M12.217 18.692q.223-.025.35-.15q.125-.127.125-.311q0-.216-.148-.332t-.363-.091q-1.025.075-2.29-.64q-1.266-.714-1.566-2.39q-.05-.236-.166-.353q-.117-.117-.295-.117q-.197 0-.335.147t-.083.44q.387 2.082 1.923 2.98t2.848.817M12 21q-3.002 0-5.001-2.061T5 13.8q0-2.154 1.738-4.765T12 3.308q3.525 3.117 5.262 5.728Q19 11.646 19 13.8q0 3.077-1.999 5.139T12 21",
+  },
+  {
+    subheading: "Pumps",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+    svgPath:
+      "m11.98 9.789l-.657.98q-.521.8-.672 1.16q-.151.362-.151.79q0 .616.434 1.054q.433.439 1.066.439t1.066-.434t.434-1.066q0-.4-.16-.79q-.161-.391-.682-1.153zm.018 8.038q-2.425 0-4.125-1.702t-1.7-4.127t1.702-4.125t4.127-1.7t4.125 1.702t1.7 4.127t-1.702 4.125t-4.127 1.7m8.502-6.558V10.5h-1.979q-.333-1.5-1.255-2.665Q16.344 6.672 15.017 6H20.5v-.77h1v6.04zm-18 7.5v-6.038h1v.769h1.979q.332 1.5 1.255 2.665q.922 1.164 2.249 1.835H3.5v.77z",
+  },
+  {
+    subheading: "Filtration",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+    svgPath:
+      "M11.77 19q-.33 0-.55-.22t-.22-.55v-5.576L5.604 5.83q-.202-.27-.055-.55t.47-.28h11.962q.323 0 .47.28q.147.282-.055.55L13 12.655v5.577q0 .328-.22.549t-.55.22z",
+  },
+  {
+    subheading: "Irrigation",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
+    svgPath:
+      "M9.127 21q-.546 0-.975-.338q-.429-.339-.585-.88l-1.027-4.05h10.923l-1.03 4.052q-.155.54-.584.878q-.429.339-.975.339zM12 8.673q.192-1.961 1.577-3.346t3.346-1.558q-.173 1.808-1.415 3.16T12.5 8.63V11h7.154v2.346q0 .671-.472 1.143t-1.143.472H6q-.671 0-1.143-.471q-.473-.473-.473-1.144V11H11.5V8.63q-1.766-.35-2.998-1.692T7.077 3.77q1.961.173 3.346 1.558T12 8.673",
+  },
+];
+---
+
+<section class="services">
+  {
+    data.map((d) => (
+      <div class="card">
+        <hr class="divider" />
+        <div class="card-wrapper">
+          <h4 class="subheading">{d.subheading}</h4>
+
+          <div class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={60}
+              height={60}
+              viewBox="0 0 24 24"
+            >
+              <path d={d.svgPath} />
+            </svg>
+          </div>
+          <div class="description">{d.description}</div>
+        </div>
+      </div>
+    ))
+  }
+
+  <!-- 
+TODO
+1. MAKE RESPONSIVE FOR SCREENSIZES
+2. CHANGE HOVER EFFECT TO ACTIVE
+3. ADD IN IMAGE THAT CHANGES ON EACH SELECTION
+  -->
+
+  <style>
+    .services {
+      display: grid;
+      max-width: 850px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      padding: 40px;
+      margin: 0 auto;
+    }
+    .card {
+      align-items: flex-start;
+      height: 300px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding-left: 1rem;
+    }
+    .divider {
+      border: none;
+      width: 90%;
+      height: 4px;
+      background-color: hsl(var(--color-navy));
+      margin: 20px 0px;
+      border-radius: 10px;
+    }
+
+    .subheading {
+      font-size: 24px;
+      text-transform: capitalize;
+      letter-spacing: 0.025em;
+    }
+
+    .description {
+      padding-right: 5rem;
+      font-weight: 500;
+    }
+
+    .icon {
+      padding: 1rem 0rem;
+    }
+
+    .card-wrapper {
+      padding-left: 1rem;
+    }
+
+    .card:hover {
+      background-color: hsl(var(--color-navy));
+      color: hsl(var(--color-off-white));
+      border-radius: 8px;
+      padding-left: 1rem;
+    }
+
+    .card:hover .divider {
+      background-color: hsl(var(--color-off-white));
+    }
+
+    .icon path {
+      fill: hsl(var(--color-navy));
+    }
+
+    .card:hover .icon path {
+      fill: hsl(var(--color-off-white));
+    }
+  </style>
+</section>
+
+<script></script>

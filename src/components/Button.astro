@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  mode: "light" | "dark";
+}
+
+const title = Astro.props.title;
+const mode = Astro.props.mode;
+---
+
+<button class=`button-${mode}`>{title}</button>
+
+<style>
+  .button-light {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    padding: 1rem 2.5rem;
+    border: 2px solid hsl(var(--color-navy));
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 1rem;
+  }
+
+  .button-light:hover {
+    background-color: hsl(var(--color-navy));
+    color: hsl(var(--color-off-white));
+  }
+
+  .button-dark {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    padding: 1rem 2.5rem;
+    border: 2px solid hsl(var(--color-navy));
+    border-radius: 8px;
+    background-color: hsl(var(--color-navy));
+    color: hsl(var(--color-off-white));
+    cursor: pointer;
+    margin: 1rem;
+  }
+
+  .button-dark:hover {
+    background-color: hsl(var(--off-white));
+    color: hsl(var(--color-navy));
+  }
+</style>

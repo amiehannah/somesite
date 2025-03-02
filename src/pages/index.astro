@@ -1,15 +1,27 @@
 ---
+import Button from "../components/Button.astro";
+import Counter from "../components/Counter.astro";
+import FeatureTitle from "../components/FeatureTitle.astro";
+import Footer from "../components/Footer.astro";
+import ServicesCard from "../components/ServicesCard.astro";
 import Layout from "../layouts/Layout.astro";
 import "../styles/globals.css";
 ---
 
 <Layout>
-  <!-- <Welcome /> -->
-  <p class="test">styles</p>
+  <div class="block"></div>
+  <Counter />
+  <FeatureTitle title="Our Services" />
+  <ServicesCard />
+  <Button mode="light" title="learn more" />
+  <Button mode="dark" title="learn more" />
+  <FeatureTitle title="Our Process" />
+  <div class="block"></div>
+  <Footer />
 </Layout>
 
 <style>
-  .test {
-    color: hsl(var(--color-highlight));
+  .block {
+    height: 1000px;
   }
 </style>

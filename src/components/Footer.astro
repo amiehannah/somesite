@@ -1,0 +1,204 @@
+<section class="footer-wrapper">
+  <div class="box1">
+    <div class="logo">
+      <h1>LOGO<br />LOGO</h1>
+    </div>
+    <div class="mission">
+      <h3>Our Mission</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
+    <div class="address">
+      <h3>Address</h3>
+      <p class="paragraph-address">
+        First Line Address<br />Second Line Address<br />Third Line<br
+        />Postcode
+      </p>
+    </div>
+    <div class="quick-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li class="footer-links"><a href="#">About us</a></li>
+        <li class="footer-links"><a href="#">Services</a></li>
+        <li class="footer-links"><a href="#">Some other link</a></li>
+        <li class="footer-links"><a href="#">Contact us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box2">
+    <!-- <Image
+      src="https://placehold.co/450x300"
+      alt="placeholder"
+      width="450"
+      height="300"
+    /> -->
+  </div>
+  <div class="box3">
+    <div class="newsletter">
+      <h3>NEWSLETTER / REGISTER YOUR INTEREST</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <div class="email-input">
+        <input type="email" placeholder="PLACEHOLDER EMAIL" />
+        <span class="arrow">→</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p class="paragraph-upper">Website Designed by Amie</p>
+    <p class="paragraph-upper">©2025 BRAND NAME LTD. ALL RIGHTS RESERVED.</p>
+  </div>
+</section>
+
+<style>
+  .footer-wrapper {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "box1 box2"
+      "box1 box3"
+      "footer footer";
+  }
+
+  .box1 {
+    background-color: hsl(var(--color-stone));
+    height: 530px;
+    grid-area: box1;
+    /* internal grid for footer content */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "logo mission"
+      "address links";
+    gap: 32px;
+    padding: 60px;
+    align-items: baseline;
+  }
+
+  .box2 {
+    background-color: hsl(var(--color-whited));
+    height: 250px;
+    width: auto;
+    border: 1px solid hsl(var(--color-navy));
+    grid-area: box2;
+  }
+
+  .box3 {
+    background-color: hsl(var(--color-mint));
+    height: auto;
+    grid-area: box3;
+    padding: 24px 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer {
+    background-color: hsl(var(--color-navy));
+    height: 65px;
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 2rem;
+  }
+  .paragraph-upper {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 12px;
+    color: hsl(var(--color-off-white));
+  }
+
+  .newsletter h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  .newsletter p {
+    font-size: 14px;
+    color: hsl(var(--color-navy));
+    margin-bottom: 16px;
+  }
+
+  .email-input {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid hsl(var(--color-navy));
+    padding: 5px 0px;
+    width: 100%;
+  }
+
+  .email-input input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+    padding: 5px;
+  }
+
+  .email-input .arrow {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .logo {
+    grid-area: logo;
+    font-size: 24px;
+    font-weight: bold;
+    color: hsl(var(--color-navy));
+  }
+
+  .mission {
+    grid-area: mission;
+  }
+
+  .address {
+    grid-area: address;
+  }
+
+  .quick-links {
+    grid-area: links;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    margin-bottom: 5px;
+  }
+
+  ul li a {
+    text-decoration: none;
+    color: hsl(var(--color-navy));
+    text-transform: uppercase;
+  }
+
+  ul li a:hover {
+    font-weight: bold;
+  }
+
+  .paragraph-address {
+    line-height: 1.7em;
+  }
+</style>

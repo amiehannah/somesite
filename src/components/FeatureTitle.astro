@@ -1,0 +1,38 @@
+---
+import React from "react";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const value = title.split(" ");
+---
+
+<div class="title">
+  <div class={"title-" + value}>
+    {
+      value.map((val, index) => (
+        <div class="heading-wrapper" key={index}>
+          <h2 class="heading">{val}</h2>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .title {
+    /* padding-left: 4rem;*/
+    margin: 24px;
+  }
+
+  .heading-wrapper {
+    margin-top: -24px;
+  }
+  .heading {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 56px;
+  }
+</style>
