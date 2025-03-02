@@ -91,14 +91,8 @@ h3 {
   text-transform: uppercase;
 }
 
-:root {
-  /* breakpoints */
-  --breakpoint-mobile: 375px;
-  --breakpoint-small: 576px;
-  --breakpoint-tablet: 768px;
-  --breakpoint-large: 992px;
-  --breakpoint-desktop: 1280px;
 
+:root {
   /* colours */
   --color-white: 0 0% 100%;
   --color-off-white: 0 0% 96%;
