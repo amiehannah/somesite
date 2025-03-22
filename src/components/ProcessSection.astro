@@ -1,0 +1,17 @@
+---
+import FeatureTitle from "./FeatureTitle.astro";
+import FullWidthWrapper from "./FullWidthWrapper.astro";
+import ProcessCard from "./ProcessCard.astro";
+import Wrapper from "./Wrapper.astro";
+---
+
+<FullWidthWrapper section="process" bgColor=`hsl(var(--color-stone))`>
+  <FeatureTitle title="Our Process" />
+  <ProcessCard />
+</FullWidthWrapper>
+
+<style>
+  .process-styles {
+    background-color: hsl(var(--color-stone));
+  }
+</style>

@@ -1,0 +1,91 @@
+---
+import Button from "./Button.astro";
+import Counter from "./Counter.astro";
+import FullWidthWrapper from "./FullWidthWrapper.astro";
+---
+
+<FullWidthWrapper section="more" bgColor=`hsl(var(--color-mint))`>
+  <div class="more-wrapper">
+    <div class="box1">
+      <div class="image-one"></div>
+      <div class="image-two"></div>
+    </div>
+    <div class="box2">
+      <h3 class="title-more">More about our work</h3>
+
+      <p class="text-content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco
+      </p>
+      <div>
+        <Button title="Learn more" mode="light" />
+      </div>
+    </div>
+  </div>
+  <Counter />
+</FullWidthWrapper>
+
+<style>
+  .more-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    border: 3px solid red;
+    padding-bottom: 2rem;
+  }
+
+  .box1 {
+    border: 3px solid yellow;
+    display: grid;
+    gap: 1rem;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px auto;
+    flex-shrink: 0;
+  }
+
+  .box2 {
+    border: 3px solid green;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    /* max-width: 70ch; */
+  }
+
+  .image-one,
+  .image-two {
+    border: 3px solid blueviolet;
+    height: 450px;
+    width: 275px;
+  }
+  .image-one {
+    grid-row: 1;
+    grid-column: 1;
+    background-image: url("../assets/waterpouringoutpipe.jpg");
+    background-size: cover;
+  }
+
+  .image-two {
+    grid-row: 2;
+    grid-column: 2;
+    background-image: url("../assets/bodyofwater.jpg");
+    background-size: cover;
+  }
+
+  .title-more {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .text-content {
+    font-size: 16px;
+    padding-right: 2rem;
+  }
+</style>

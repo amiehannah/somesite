@@ -1,0 +1,40 @@
+---
+interface Props {
+  section: string;
+  bgColor?: string;
+  paddingInline?: string;
+  paddingBlock?: string;
+}
+
+const { section, bgColor } = Astro.props;
+---
+
+<section
+  class="full-width-wrapper"
+  id={`wrapper-${section}`}
+  style={`background-color: ${bgColor};`}
+>
+  <slot />
+</section>
+
+<style>
+  .full-width-wrapper {
+    padding-inline: var(--padding-inline, 6rem);
+    padding-block: var(--padding-block, 8rem);
+  }
+
+  /* media queries */
+  @media (max-width: 992px) {
+    .full-width-wrapper {
+      --padding-inline: 4rem;
+      --padding-block: 6rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .full-width-wrapper {
+      --padding-inline: 2rem;
+      --padding-block: 4rem;
+    }
+  }
+</style>

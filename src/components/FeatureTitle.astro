@@ -1,6 +1,4 @@
 ---
-import React from "react";
-
 interface Props {
   title: string;
 }
@@ -12,8 +10,8 @@ const value = title.split(" ");
 <div class="title">
   <div class={"title-" + value}>
     {
-      value.map((val, index) => (
-        <div class="heading-wrapper" key={index}>
+      value.map((val) => (
+        <div class="heading-wrapper">
           <h2 class="heading">{val}</h2>
         </div>
       ))
@@ -22,10 +20,12 @@ const value = title.split(" ");
 </div>
 
 <style>
-  .title {
-    /* padding-left: 4rem;*/
-    margin: 24px;
-  }
+  /* .title { */
+  /* padding-left: 4rem;*/
+  /* margin: 24px; */
+  /* margin: 4rem 2rem 2rem 2rem; */
+  /* padding: 4rem 2rem 2rem 2rem; */
+  /* } */
 
   .heading-wrapper {
     margin-top: -24px;

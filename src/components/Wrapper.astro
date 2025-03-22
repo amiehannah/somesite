@@ -1,0 +1,35 @@
+---
+interface Props {
+  section: string;
+}
+
+const { section } = Astro.props;
+---
+
+<section class="wrapper" id=`wrapper-${section}`>
+  <slot />
+</section>
+
+<style>
+  .wrapper {
+    width: 100%;
+    padding-inline: 6rem;
+    padding-block: 6rem 8rem;
+  }
+
+  /* media queries */
+  /* should this be 992? */
+  @media (width <= 1028px) {
+    .wrapper {
+      padding-inline: 4rem;
+      padding-block: 6rem;
+    }
+  }
+
+  @media (width <= 768px) {
+    .wrapper {
+      padding-inline: 2rem;
+      padding-block: 4rem;
+    }
+  }
+</style>
