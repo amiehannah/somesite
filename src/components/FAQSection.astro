@@ -1,0 +1,175 @@
+---
+const faq = [
+	{
+		question: "What is a bore?",
+		content:
+			"Water boring, also called well drilling, groundwater drilling, or borehole drilling, is the process of accessing underground water by drilling into aquifers. <br><br> This method provides a dependable and sustainable water source for various needs, including drinking, irrigation, livestock and household use. Once the groundwater is reached, it can be pumped to the surface for easy access.",
+	},
+	{
+		question: "Where can I locate a bore?",
+		content: `When choosing a location for a bore in your yard, consider the following factors:
+		<br><br>
+- <strong>Accessibility for drilling:</strong> Can the drilling rig easily reach the site? <br>
+- <strong>Power supply to the pump:</strong> How easy and cost-effective will it be to run power to the pump? <br>
+ <strong>Water distribution:</strong> How will you distribute water from the pump outlet? <br>
+`,
+	},
+	{
+		question: "How long does the installation take?",
+		content: `The drilling and casing process typically takes 4-6 hours, depending on the material and depth. It involves five key steps:
+<br><br>
+1. <strong>Drilling</strong> into the ground to reach the water source. <br>
+2. <strong>Installing casing</strong> to support and protect the borehole. <br>
+3. <strong>Clearing the casing interior</strong> to remove sand, silt, and clay. <br>
+4. <strong>Testing flow rate and water quality</strong> to ensure reliability. <br>
+5. <strong>Installing the pump</strong> for water extraction.
+`
+		
+	},
+	{
+		question: "Do I need approval or a permit before drilling?",
+		content: `No, there are no restrictions on drilling for water if you are a homeowner using it for non-commercial purposes such as watering your yard, garden, or lawn, or filling a pool.<br><br> 
+		However, some small areas south of the river have been designated as sensitive. If you are in one of these areas, please contact us to discuss any additional restrictions or requirements. <br>`,
+	},
+	{
+		question: "Do you drill outside of the Mackay area?",
+		content: "Yes, we can drill all around central Queensland and have drilled from Bowen to Marlborough and west to Moranbah.",
+	},
+];
+
+---
+<section class="section-faq">
+<div class="title-wrapper">
+	<h2>Frequently Asked Questions</h2>
+</div>
+
+<div class="accordion-wrapper">
+	{faq.map((faq => (
+		<button class="accordion">{faq.question}
+		<div></div>
+		</button>
+	<div class="panel">
+		<p set:html={faq.content}>
+		</p>
+
+	</div>
+)))}
+</div>
+</section>
+
+<style>
+	.section-faq {
+		padding: 4rem 6rem 6rem 6rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.title-wrapper {
+		display: flex;
+		justify-content: center;
+		padding: 0rem 0rem 2rem 0rem;
+	}
+
+	.accordion-wrapper {
+		max-width: 750px;
+		width: 100%;
+	}
+
+	.accordion {
+		background-color: hsl(var(--color-navy));
+		color: hsl(var(--color-off-white));
+		cursor: pointer;
+		padding: 20px 30px 20px 20px;
+		width: 100%;
+		border: none;
+		text-align: left;
+		outline: none;
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing:0.05em;
+  		transition: all 0.6s ease;
+	}
+
+	.active,
+	.accordion:hover {
+		background-color: hsl(var(--color-mint));
+		color: hsl(var(--color-navy));
+	}
+
+	.panel {
+		padding: 1.5rem 18px;
+		display: none;
+		background-color: hsl(var(--color-off-white));
+		overflow: hidden;
+		font-style: italic;
+	}
+
+	.accordion::before {
+	content: '';
+    vertical-align: middle;
+    display: inline-block;
+    border-top: 7px solid hsl(var(--color-off-white));
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    float: right;
+  	transition: all 0.6s ease;
+	transform: rotate(0deg);
+    margin-top: 5px;
+	}
+
+	.accordion:hover::before {
+		border-top: 7px solid hsl(var(--color-navy));
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
+	}
+	.active.accordion::before {
+	transform: rotate(-90deg);
+}
+
+	/* button section */
+ button {
+  position: relative;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 1em 0;
+  font-size: 1.15rem;
+  font-weight: 400;
+  border: none;
+  background: none;
+  outline: none;
+}
+h2 {
+		text-align: center;
+	}
+
+/* media queries */
+@media screen and (max-width: 720px) { 
+	.section-faq {
+		padding: 4rem;
+	}
+}
+@media screen and (max-width: 480px) { 
+	.section-faq {
+		padding: 4rem 2rem 4rem 2rem;
+	}
+}
+
+</style>
+
+<script>
+	const accordions = document.querySelectorAll<HTMLElement>(".accordion");
+
+	accordions.forEach((accordion) => {
+		accordion.addEventListener("click", () => {
+			accordion.classList.toggle("active");
+			const panel = accordion.nextElementSibling as HTMLElement | null;
+
+			if (panel) {
+				panel.style.display =
+					panel.style.display === "block" ? "none" : "block";
+					panel.style.transition = "0.6s easeIn"
+			}
+		});
+	});
+</script>
