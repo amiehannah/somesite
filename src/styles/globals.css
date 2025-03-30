@@ -184,3 +184,8 @@ section,
 article {
   container-type: inline-size;
 } */
+
+button {
+  cursor: pointer;
+  all: unset;
+}
