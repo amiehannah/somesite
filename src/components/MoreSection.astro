@@ -11,7 +11,7 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
       <div class="image-two"></div>
     </div>
     <div class="box2">
-      <h3 class="title-more">More about our work</h3>
+      <h3 class="title-more" id="about">About our work</h3>
 
       <p class="text-content">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -21,7 +21,7 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
         ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
         exercitation ullamco
       </p>
-      <div>
+      <div class="button-wrapper">
         <Button title="Learn more" mode="light" />
       </div>
     </div>
@@ -47,6 +47,7 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 50px auto;
     flex-shrink: 0;
+    padding: 1rem;
   }
 
   .box2 {
@@ -55,7 +56,6 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
     flex-direction: column;
     gap: 2rem;
     padding: 1rem;
-    /* max-width: 70ch; */
   }
 
   .image-one,
@@ -86,6 +86,20 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
 
   .text-content {
     font-size: 16px;
-    padding-right: 2rem;
+  }
+
+  /* media queries */
+  @media (width <= 510px) {
+    .title-more {
+      text-align: center;
+    }
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+    .box1 {
+      display: flex;
+      flex-direction: column;
+    }
   }
 </style>

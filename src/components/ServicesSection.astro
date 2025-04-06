@@ -44,7 +44,7 @@ const data = [
  2. add carousel of image which changes onclick of each card
  3. look to make widths responsive (see below) -->
 <Wrapper section="services">
-  <FeatureTitle title="Our Services" />
+  <FeatureTitle title="Our Services" id="services" />
   <div class="services-layout">
     <div class="background-image" id="background-image"></div>
 
@@ -55,7 +55,7 @@ const data = [
           <div data-image={d.image} class="card">
             <hr class="divider" />
             <div class="card-wrapper">
-              <h4 class="subheading">{d.subheading}</h4>
+              <h3 class="subheading">{d.subheading}</h3>
 
               <div class="icon">
                 <svg
@@ -157,6 +157,7 @@ const data = [
 
   .subheading {
     font-size: 24px;
+    font-weight: 700;
     text-transform: capitalize;
     letter-spacing: 0.025em;
   }

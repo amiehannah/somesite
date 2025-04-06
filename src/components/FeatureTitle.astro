@@ -1,13 +1,14 @@
 ---
 interface Props {
   title: string;
+  id?: string;
 }
 
-const { title } = Astro.props;
+const { title, id } = Astro.props;
 const value = title.split(" ");
 ---
 
-<div class="title">
+<div class="title" id={id}>
   <div class={"title-" + value}>
     {
       value.map((val) => (

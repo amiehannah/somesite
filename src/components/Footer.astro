@@ -1,50 +1,43 @@
-<section class="footer-wrapper">
+<section class="footer-wrapper" id="contact">
   <div class="box1">
-    <div class="logo">
-      <h1>LOGO<br />LOGO</h1>
-    </div>
-    <div class="mission">
-      <h3>Our Mission</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-    </div>
-    <div class="address">
-      <h3>Address</h3>
-      <p class="paragraph-address">
-        First Line Address<br />Second Line Address<br />Third Line<br
-        />Postcode
-      </p>
-    </div>
-    <div class="quick-links">
-      <h3>Quick Links</h3>
-      <ul>
-        <li class="footer-links"><a href="#">About us</a></li>
-        <li class="footer-links"><a href="#">Services</a></li>
-        <li class="footer-links"><a href="#">Some other link</a></li>
-        <li class="footer-links"><a href="#">Contact us</a></li>
-      </ul>
+    <div class="box1-content">
+      <div class="logo">
+        <h1>LOGO<br />LOGO</h1>
+      </div>
+      <div class="mission">
+        <h2 class="subheading">Our Mission</h2>
+        <p class="paragraph-mission">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+      <div class="address">
+        <p class="paragraph-address">
+          First Line Address<br />Second Line Address<br />Third Line<br
+          />Postcode
+        </p>
+      </div>
+      <div class="quick-links">
+        <ul>
+          <li class="footer-links"><a href="#about">About us</a></li>
+          <li class="footer-links"><a href="#services">Services</a></li>
+          <li class="footer-links"><a href="#">Some other link</a></li>
+          <li class="footer-links"><a href="#">Contact us</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="box2">
-    <!-- <Image
-      src="https://placehold.co/450x300"
-      alt="placeholder"
-      width="450"
-      height="300"
-    /> -->
-  </div>
+  <div class="box2"></div>
   <div class="box3">
     <div class="newsletter">
-      <h3>NEWSLETTER / REGISTER YOUR INTEREST</h3>
+      <h3>register your interest</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
       </p>
       <div class="email-input">
-        <input type="email" placeholder="PLACEHOLDER EMAIL" />
+        <input type="email" placeholder="email@emailaddress.com" />
         <span class="arrow">→</span>
       </div>
     </div>
@@ -56,10 +49,22 @@
 </section>
 
 <style>
+  .box1-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "logo links"
+      "mission address";
+    gap: 2rem;
+  }
+
   .footer-wrapper {
     display: grid;
     grid-template-columns: 60% 40%;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 1fr 1fr auto;
     grid-template-areas:
       "box1 box2"
       "box1 box3"
@@ -68,43 +73,31 @@
 
   .box1 {
     background-color: hsl(var(--color-stone));
-    /* height: 530px; */
-    height: auto;
     grid-area: box1;
-    /* internal grid for footer content */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-      "logo mission"
-      "address links";
-    gap: 32px;
-    padding: 60px;
-    align-items: baseline;
+    padding: 2rem;
   }
 
   .box2 {
     background-color: hsl(var(--color-whited));
-    /* height: 250px; */
-    width: auto;
-    border: 1px solid hsl(var(--color-navy));
+    background-image: url("../assets/pool.jpg");
+    background-size: cover;
     grid-area: box2;
   }
 
   .box3 {
     background-color: hsl(var(--color-mint));
-    height: auto;
     grid-area: box3;
-    padding: 24px 16px;
+    padding: 1rem;
     display: flex;
     align-items: center;
   }
 
   .footer {
     background-color: hsl(var(--color-navy));
-    height: 65px;
+    height: 3.75rem;
     grid-area: footer;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: 0rem 2rem;
@@ -112,20 +105,27 @@
   .paragraph-upper {
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    font-size: 12px;
+    font-size: 10px;
     color: hsl(var(--color-off-white));
   }
-
+  .subheading {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.45px;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
   .newsletter h3 {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 
   .newsletter p {
-    font-size: 14px;
+    font-size: 0.875rem;
     color: hsl(var(--color-navy));
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 
   .email-input {
@@ -140,7 +140,7 @@
     flex: 1;
     border: none;
     outline: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     background: transparent;
     padding: 5px;
   }
@@ -160,14 +160,25 @@
 
   .mission {
     grid-area: mission;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 
   .address {
     grid-area: address;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .quick-links {
     grid-area: links;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
   h3 {
@@ -177,7 +188,7 @@
   }
 
   p {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   ul {
@@ -186,35 +197,100 @@
   }
 
   ul li {
-    margin-bottom: 5px;
+    padding-bottom: 6px;
   }
 
   ul li a {
     text-decoration: none;
     color: hsl(var(--color-navy));
     text-transform: uppercase;
+    position: relative;
+  }
+
+  ul li a::before {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: currentColor;
+    opacity: 1;
+    transition: width 0.5s ease-in-out;
+    display: inline-block;
   }
 
   ul li a:hover {
     font-weight: bold;
   }
 
+  ul li a:hover::before {
+    /* width: 100%; */
+    animation: fadeGrow 0.5s ease-in-out forwards;
+  }
+  @keyframes fadeGrow {
+    0% {
+      width: 0%;
+      opacity: 0;
+    }
+    50% {
+      width: 50%;
+      opacity: 0.5;
+    }
+    100% {
+      width: 100%;
+      opacity: 1;
+    }
+  }
   .paragraph-address {
     line-height: 1.7em;
   }
+  .paragraph-mission {
+    line-height: 1.25rem;
+  }
 
   /* media queries */
+  @media screen and (min-width: 1200px) {
+    .box1 {
+      padding-inline: 6.75rem;
+    }
+    .box3 {
+      padding: 0rem 2rem;
+    }
+  }
   @media screen and (max-width: 768px) {
     .footer-wrapper {
       grid-template-columns: 60% 40%;
       grid-template-rows: auto auto auto;
       grid-template-areas: "box1 box1" "box3 box2" "footer footer";
     }
+    .box3 {
+      padding: 2rem;
+    }
   }
   @media screen and (max-width: 576px) {
     .footer-wrapper {
       grid-template-columns: 1fr;
       grid-template-areas: "box1" "box3" "footer";
+    }
+    .footer {
+      padding: 1rem 1rem;
+    }
+    .box1-content {
+      gap: 3rem 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      grid-template-areas:
+        "logo logo"
+        "mission mission"
+        "links address";
+    }
+    .address {
+      align-items: flex-start;
+    }
+    .quick-links {
+      align-items: flex-start;
     }
   }
 </style>

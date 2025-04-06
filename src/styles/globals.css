@@ -97,8 +97,10 @@ h3 {
   --color-off-white: 0 0% 96%;
   --color-navy: 203 78% 15%;
   --color-cobalt: 205 100% 34%;
-  --color-highlight: 167 87% 38%;
-  --color-teal: 178 84% 24%;
+  /* --color-highlight: 167 87% 38%; */
+  --color-highlight: 167 86% 28%;
+  /* --color-teal: 178 84% 24%; */
+  --color-teal: 178 83% 28%;
   --color-mint: 171 38% 85%;
   --color-stone: 32 32% 91%;
 
@@ -112,6 +114,7 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  scroll-behavior: smooth;
 }
 
 /* Remove default margin in favour of better control in authored CSS */
