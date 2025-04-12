@@ -24,15 +24,14 @@
 
 <style>
   .counters {
-    padding-top: 4em;
+    padding-top: 3em;
     background: hsl(var(--color-mint));
     color: hsl(var(--color-navy));
     text-align: center;
-    border: 3px solid pink;
   }
 
   .counters > div {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -66,6 +65,9 @@
   }
 
   @media screen and (max-width: 576px) {
+    .counters {
+      padding-top: 2em;
+    }
     .counters > div {
       grid-template-columns: 1fr;
       padding-inline: 2em;
