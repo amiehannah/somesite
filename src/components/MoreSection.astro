@@ -21,9 +21,20 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
         ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
         exercitation ullamco
       </p>
+      <p class="text-content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco
+      </p>
       <div class="button-wrapper">
         <Button title="Learn more" mode="light" />
       </div>
+    </div>
+    <div class="box3">
+      <div class="image-three"></div>
     </div>
   </div>
   <Counter />
@@ -35,12 +46,11 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    border: 3px solid red;
-    padding-bottom: 2rem;
+    /* border: 3px solid yellow; */
+    padding-bottom: 1rem;
   }
 
   .box1 {
-    border: 3px solid yellow;
     display: grid;
     gap: 1rem;
     justify-content: center;
@@ -48,21 +58,23 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
     grid-template-rows: 50px auto;
     flex-shrink: 0;
     padding: 1rem;
+    width: 100%;
+    max-width: 600px;
   }
 
   .box2 {
-    border: 3px solid green;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     padding: 1rem;
+    justify-content: center;
   }
 
   .image-one,
-  .image-two {
-    border: 3px solid blueviolet;
+  .image-two,
+  .image-three {
     height: 450px;
-    width: 275px;
+    width: 100%;
   }
   .image-one {
     grid-row: 1;
@@ -78,6 +90,10 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
     background-size: cover;
   }
 
+  .image-three {
+    display: none;
+  }
+
   .title-more {
     font-size: 40px;
     text-transform: uppercase;
@@ -89,7 +105,7 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
   }
 
   /* media queries */
-  @media (width <= 510px) {
+  @media (width <= 675px) {
     .title-more {
       text-align: center;
     }
@@ -100,6 +116,26 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
     .box1 {
       display: flex;
       flex-direction: column;
+      width: 100%;
+    }
+    .box3 {
+      padding: 1rem;
+      width: 100%;
+    }
+    .image-two {
+      display: none;
+    }
+    .image-three {
+      display: block;
+      background-image: url("../assets/bodyofwater.jpg");
+      background-size: cover;
+      padding: 1rem;
+    }
+
+    .image-one,
+    .image-three {
+      height: 400px;
+      width: 100%;
     }
   }
 </style>
