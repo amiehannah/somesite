@@ -36,7 +36,8 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
         proud to offer a service that’s both professional and personal.
       </p>
       <div class="button-wrapper">
-        <Button title="Learn more" mode="light" />
+        <!-- <Button title="Learn more" mode="light" /> -->
+        <a href="#faq" class="button">Learn more</a>
       </div>
     </div>
     <div class="box3">
@@ -110,6 +111,27 @@ import FullWidthWrapper from "./FullWidthWrapper.astro";
     font-size: 16px;
   }
 
+  /* styling link as button */
+  .button {
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    padding: 1rem 2.5rem;
+    border: 2px solid hsl(var(--color-navy));
+    border-radius: 8px;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .button:visited {
+    color: inherit;
+  }
+  .button:hover {
+    background-color: hsl(var(--color-navy));
+    color: hsl(var(--color-off-white));
+  }
   /* media queries */
   @media (width <= 675px) {
     .title-more {
