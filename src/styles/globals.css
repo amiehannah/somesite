@@ -106,6 +106,8 @@ h3 {
 
   /* spacing */
   --std-gap: 8px;
+
+  transition-behavior: allow-discrete;
 }
 
 /* Here are some new bits added from KP resources */

@@ -85,21 +85,31 @@ const data = [
  loop through all the tiles, remove the class that make it active -->
 
 <style>
+  :root {
+    --image-transition-duration: 0.3s;
+    --image-transition-timing: ease-in-out;
+  }
+
   .services-layout {
     padding-block: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
     gap: 1rem;
+    max-width: 1600px;
+    margin-inline: auto;
   }
+
   #background-image {
     background-size: cover;
     width: 100%;
+    max-width: 718px;
+    justify-self: center;
     border-radius: 10px;
     background-position: center;
     position: relative;
     overflow: clip;
-    transition: opacity 150ms ease-in-out;
+    transition: opacity var(--image-transition-duration)
+      var(--image-transition-timing);
   }
 
   #background-image::before {
@@ -108,10 +118,12 @@ const data = [
     background-size: cover;
     background-position: center;
     position: absolute;
+    overflow: clip;
     inset: 0;
     opacity: 0;
     border-radius: 10px;
-    transition: opacity 0.8s ease-in-out;
+    transition: opacity var(--image-transition-duration)
+      var(--image-transition-timing);
     z-index: 1;
   }
 
@@ -128,35 +140,23 @@ const data = [
     opacity: 1;
   }
 
-  /* media queries */
-  @media (width <= 1024px) {
-    .services-layout {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    #background-image {
-      height: 60vh;
-    }
-  }
-
   /* styles for the cards */
   .services-cards {
     display: grid;
-    /* max-width: 800px; */
+    max-width: 800px;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin: 0 auto;
   }
   .card {
     align-items: flex-start;
-    height: auto;
     border: 1px solid transparent;
     border-radius: 8px;
     padding: 0rem 1rem 1rem 1rem;
-    width: 320px;
-    min-height: 250px;
     cursor: pointer;
-    transition: background-color 0.1s ease-in-out 0.1s;
+    transition-property: background-color, visibility;
+    transition-duration: var(--image-transition-duration);
+    transition-timing-function: linear;
   }
 
   .divider {
@@ -178,6 +178,12 @@ const data = [
   .description {
     font-weight: 500;
     padding-top: 1rem;
+    visibility: hidden;
+    color: hsl(var(--color-off-white));
+  }
+
+  .card-active .description {
+    visibility: visible;
   }
 
   .icon {
@@ -187,6 +193,7 @@ const data = [
   .card-wrapper {
     padding: 1rem;
   }
+
   .card-active {
     --color: var(--color-off-white);
     --background-color: var(--color-navy);
@@ -194,31 +201,51 @@ const data = [
     background-color: hsl(var(--background-color));
     color: hsl(var(--color));
   }
-  /* .card:hover { */
-  .card:hover,
+
   .card:focus-visible {
     outline: hsl(var(--color-navy)) solid 1px;
-    /* border-color: hsl(var(--color-navy)); */
-    /* color: hsl(var(--color-off-white)); */
-    /* border-radius: 8px; */
-    /* padding-left: 1rem; */
   }
 
   .icon path {
     fill: hsl(var(--color));
+    transition-property: fill;
+    transition-duration: var(--image-transition-duration);
+    transition-timing-function: linear;
   }
 
-  /* media query */
-  @media screen and (max-width: 576px) {
+  /* media queries */
+  @media screen and (width <= 1500px) {
+    .services-layout {
+      grid-template-columns: 1fr;
+      max-width: 700px;
+      gap: 2rem;
+      margin-inline: auto;
+      height: auto;
+    }
+    #background-image {
+      max-width: 100%;
+      height: 400px;
+    }
+  }
+
+  @media screen and (width <= 576px) {
+    .services-layout {
+      max-width: 320px;
+      margin-inline: auto;
+    }
+
     .services-cards {
       grid-template-columns: 1fr;
-      /* grid-template-columns: repeat(1, minmax(0, 1fr)); */
+    }
+
+    .background-image {
+      display: none;
     }
   }
 </style>
 
 <script>
-  const transitionDuration = 800;
+  const transitionDuration = 300;
 
   const imageContainer = document.getElementById("background-image");
   const cards = document.querySelectorAll<HTMLElement>(".card");
