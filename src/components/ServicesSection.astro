@@ -6,7 +6,7 @@ import Wrapper from "./Wrapper.astro";
 const data = [
   {
     subheading: "Water Bores",
-    image: "/assets/leafcloseup.jpg",
+    image: "/images/leafcloseup.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
     svgPath:
@@ -14,7 +14,7 @@ const data = [
   },
   {
     subheading: "Pumps",
-    image: "/assets/watertap.jpg",
+    image: "/images/watertap.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
     svgPath:
@@ -22,7 +22,7 @@ const data = [
   },
   {
     subheading: "Filtration",
-    image: "/assets/filtration.jpg",
+    image: "/images/filtration.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
     svgPath:
@@ -30,7 +30,7 @@ const data = [
   },
   {
     subheading: "Irrigation",
-    image: "/assets/irrigation.jpg",
+    image: "/images/irrigation.jpg",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do, Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do",
     svgPath:
@@ -51,8 +51,8 @@ const data = [
     <!-- Card section -->
     <div class="services-cards">
       {
-        data.map((d) => (
-          <div data-image={d.image} class="card">
+        data.map((d, index) => (
+          <button data-image={d.image} class="card" data-index={index}>
             <hr class="divider" />
             <div class="card-wrapper">
               <h3 class="subheading">{d.subheading}</h3>
@@ -69,7 +69,7 @@ const data = [
               </div>
               <div class="description">{d.description}</div>
             </div>
-          </div>
+          </button>
         ))
       }
     </div>
@@ -85,25 +85,50 @@ const data = [
  loop through all the tiles, remove the class that make it active -->
 
 <style>
+  :root {
+    --image-transition-duration: 0.3s;
+    --image-transition-timing: ease-in-out;
+  }
+
   .services-layout {
     padding-block: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
     gap: 1rem;
+    max-width: 1600px;
+    margin-inline: auto;
   }
-  .background-image {
-    background-image: url("../assets/bluewater.jpg");
+
+  #background-image {
     background-size: cover;
     width: 100%;
-    /* min-width: 600px; */
+    max-width: 718px;
+    justify-self: center;
     border-radius: 10px;
     background-position: center;
-    /* transition: background-image 500ms ease-in-out; */
-    /* transition-timing-function: ease-in; */
-    /* transition-duration: 1000ms; */
-    /* transition-delay: 500ms; */
-    transition: opacity 150ms ease-in-out;
+    position: relative;
+    overflow: clip;
+    transition: opacity var(--image-transition-duration)
+      var(--image-transition-timing);
+  }
+
+  #background-image::before {
+    content: "";
+    background-image: var(--new-bg-image);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    overflow: clip;
+    inset: 0;
+    opacity: 0;
+    border-radius: 10px;
+    transition: opacity var(--image-transition-duration)
+      var(--image-transition-timing);
+    z-index: 1;
+  }
+
+  #background-image.fading::before {
+    opacity: 1;
   }
 
   /* Fading Effect */
@@ -115,35 +140,23 @@ const data = [
     opacity: 1;
   }
 
-  /* media queries */
-  @media (width <= 1024px) {
-    .services-layout {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    .background-image {
-      height: 60vh;
-    }
-  }
-
   /* styles for the cards */
   .services-cards {
     display: grid;
-    /* max-width: 800px; */
+    max-width: 800px;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin: 0 auto;
   }
   .card {
     align-items: flex-start;
-    height: auto;
     border: 1px solid transparent;
     border-radius: 8px;
     padding: 0rem 1rem 1rem 1rem;
-    width: 320px;
-    min-height: 250px;
     cursor: pointer;
-    transition: background-color 0.1s ease-in-out 0.1s;
+    transition-property: background-color, visibility;
+    transition-duration: var(--image-transition-duration);
+    transition-timing-function: linear;
   }
 
   .divider {
@@ -165,6 +178,12 @@ const data = [
   .description {
     font-weight: 500;
     padding-top: 1rem;
+    visibility: hidden;
+    color: hsl(var(--color-off-white));
+  }
+
+  .card-active .description {
+    visibility: visible;
   }
 
   .icon {
@@ -176,70 +195,165 @@ const data = [
   }
 
   .card-active {
-    background-color: hsl(var(--color-navy));
-    color: hsl(var(--color-off-white));
+    --color: var(--color-off-white);
+    --background-color: var(--color-navy);
+
+    background-color: hsl(var(--background-color));
+    color: hsl(var(--color));
   }
-  /* .card:hover { */
-  .card:hover {
-    background-color: hsl(var(--color-navy));
-    color: hsl(var(--color-off-white));
-    border-radius: 8px;
-    padding-left: 1rem;
+
+  .card:focus-visible {
+    outline: hsl(var(--color-navy)) solid 1px;
   }
 
   .icon path {
-    fill: hsl(var(--color-navy));
+    fill: hsl(var(--color));
+    transition-property: fill;
+    transition-duration: var(--image-transition-duration);
+    transition-timing-function: linear;
   }
 
-  .card:hover .icon path {
-    fill: hsl(var(--color-off-white));
+  /* media queries */
+  @media screen and (width <= 1500px) {
+    .services-layout {
+      grid-template-columns: 1fr;
+      max-width: 700px;
+      gap: 2rem;
+      margin-inline: auto;
+      height: auto;
+    }
+    #background-image {
+      max-width: 100%;
+      height: 400px;
+    }
   }
 
-  /* media query */
-  @media screen and (max-width: 576px) {
+  @media screen and (width <= 576px) {
+    .services-layout {
+      max-width: 320px;
+      margin-inline: auto;
+    }
+
     .services-cards {
       grid-template-columns: 1fr;
-      /* grid-template-columns: repeat(1, minmax(0, 1fr)); */
+    }
+
+    .background-image {
+      display: none;
     }
   }
 </style>
 
 <script>
-  function changeBackground(event: MouseEvent): void {
-    const target = event.currentTarget as HTMLElement;
-    const newImageSrc = target.dataset.image; // Get image URL from data attribute
-    if (!newImageSrc) return; // Prevent errors if data-image is missing
+  const transitionDuration = 300;
 
-    const servicesImage = document.getElementById(
-      "background-image"
-    ) as HTMLElement | null;
+  const imageContainer = document.getElementById("background-image");
+  const cards = document.querySelectorAll<HTMLElement>(".card");
 
-    if (servicesImage) {
-      // Add a fade-out effect before changing the image
-      servicesImage.classList.add("fade-out");
+  let currentCardIndex = 0;
 
-      setTimeout(() => {
-        servicesImage.style.backgroundImage = `url('src/${newImageSrc}')`;
-        servicesImage.classList.remove("fade-out");
-        servicesImage.classList.add("fade-in");
-      }, 300); // Wait for fade-out before changing image
+  if (cards && imageContainer) {
+    imageContainer.style.backgroundImage = `url('${cards[currentCardIndex].dataset.image}')`;
+    cards[currentCardIndex].classList.add("card-active");
+  }
 
-      setTimeout(() => {
-        servicesImage.classList.remove("fade-in"); // Remove class after animation
-      }, 600);
+  let isTransitioning = false;
+
+  async function changeBackground(newImageUrl: string): Promise<void> {
+    if (!imageContainer) {
+      console.error("Image container not found");
+      return;
     }
 
-    // Change card color on click
-    document.querySelectorAll<HTMLElement>(".card").forEach((card) => {
-      card.classList.remove("active-card");
-    });
+    if (isTransitioning) {
+      console.log("Transition already in progress, please wait.");
+      return;
+    }
 
-    target.classList.add("active-card"); // Add active class to clicked card
+    console.log(`Starting transition to: ${newImageUrl}`);
+    isTransitioning = true;
+
+    // 1. Set the new image on the ::before pseudo-element via CSS variable
+    imageContainer.style.setProperty("--new-bg-image", `url('${newImageUrl}')`);
+
+    // 2. Add the 'fading' class to trigger the opacity transition on ::before
+    imageContainer.classList.add("fading");
+
+    // 3. Wait for the transition to complete
+    setTimeout(() => {
+      console.log("Transition finished. Updating main background.");
+      // 4. Set the container's actual background to the new image
+      imageContainer.style.backgroundImage = `url('${newImageUrl}')`;
+
+      // 5. Remove the 'fading' class to reset the ::before element's opacity
+      imageContainer.classList.remove("fading");
+
+      // 6. Allow new transitions
+      isTransitioning = false;
+
+      // Optional cleanup: remove the CSS variable when not needed
+      // imageContainer.style.removeProperty('--new-bg-image');
+    }, transitionDuration);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll<HTMLElement>(".card").forEach((card) => {
-      card.addEventListener("click", changeBackground);
+      card.addEventListener("click", (event) => {
+        const target = event.currentTarget as HTMLElement;
+        const targetIndex = Number(target.dataset.index); // Get index from data attribute
+        if (targetIndex === currentCardIndex) {
+          return; // Ignore click if the same card is clicked
+        }
+        currentCardIndex = targetIndex;
+        const newImageUrl = target.dataset.image; // Get image URL from data attribute
+
+        document
+          .querySelectorAll<HTMLElement>(".card")
+          .forEach((card, index) => {
+            if (index == targetIndex) {
+              card.classList.add("card-active");
+            } else {
+              card.classList.remove("card-active");
+            }
+          });
+
+        if (newImageUrl) {
+          changeBackground(newImageUrl)
+            .then(() => {
+              console.log("Background changed successfully");
+            })
+            .catch((error) => {
+              console.error("Error changing background:", error);
+            });
+        }
+      });
     });
   });
+
+  // Preload function
+  function preloadImage(url: string) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(url);
+      img.onerror = reject;
+      img.src = url;
+    });
+  }
+
+  // Preload all images
+  function preloadAllImages() {
+    return Promise.all(
+      Array.from(cards)
+        .map((card) => card.dataset.image)
+        .map((imageSrc) => preloadImage(imageSrc as string))
+    );
+  }
+
+  preloadAllImages()
+    .then(() => {
+      console.log("All images preloaded");
+    })
+    .catch((error) => {
+      console.error("Error preloading images:", error);
+    });
 </script>
