@@ -11,12 +11,7 @@
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
-      <div class="address">
-        <p class="paragraph-address">
-          First Line Address<br />Second Line Address<br />Third Line<br
-          />Postcode
-        </p>
-      </div>
+
       <div class="quick-links">
         <ul>
           <li class="footer-links"><a href="#about">About us</a></li>
@@ -30,23 +25,18 @@
 
   <div class="box2"></div>
   <div class="box3">
-    <div class="newsletter">
-      <h3>register your interest</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+    <div class="address">
+      <p class="paragraph-address">
+        First Line Address<br />Second Line Address<br />Third Line<br
+        />Postcode
       </p>
-      <div class="email-input">
-        <input type="email" placeholder="email@emailaddress.com" />
-        <span class="arrow">→</span>
-      </div>
     </div>
   </div>
-  <div class="footer">
-    <p class="paragraph-upper">Website Designed by Amie</p>
-    <p class="paragraph-upper">©2025 BRAND NAME LTD. ALL RIGHTS RESERVED.</p>
-  </div>
 </section>
+<div class="footer">
+  <p class="paragraph-upper">Website Designed by Amie</p>
+  <p class="paragraph-upper">©2025 BRAND NAME LTD. ALL RIGHTS RESERVED.</p>
+</div>
 
 <style>
   .box1-content {
@@ -56,8 +46,8 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
-      "logo links"
-      "mission address";
+      "logo mission"
+      "address links";
     gap: 2rem;
   }
 
@@ -116,13 +106,13 @@
     text-transform: uppercase;
     margin-bottom: 1rem;
   }
-  .newsletter h3 {
+  .address h3 {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 1rem;
   }
 
-  .newsletter p {
+  .address p {
     font-size: 0.875rem;
     color: hsl(var(--color-navy));
     margin-bottom: 1rem;
@@ -162,7 +152,7 @@
     grid-area: mission;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   .address {
@@ -176,7 +166,7 @@
     grid-area: links;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     height: 100%;
   }
