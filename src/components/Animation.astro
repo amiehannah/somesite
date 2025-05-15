@@ -30,7 +30,6 @@ const data = [
 ---
 
 <!-- TODO 
- 1. Remove CDN version of Motion, why is the package not being picked up?
  3. Add a timeline
  post MVP - can I stagger each individual element, icon, title, description? -->
 <div>
@@ -60,12 +59,12 @@ const data = [
   </ul>
 </div>
 
-<script type="module">
+<script>
   import {
     animate,
     stagger,
     inView,
-  } from "https://cdn.jsdelivr.net/npm/motion@12.9.0/+esm";
+  } from "motion";
 
   const items = document.querySelectorAll(".process li");
   const numItems = items.length;
